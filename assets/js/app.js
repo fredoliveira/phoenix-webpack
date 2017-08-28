@@ -19,3 +19,9 @@ import "phoenix_html"
 // paths "./socket" or full ones "web/static/js/socket".
 
 // import socket from "./socket"
+
+const message = 'Your app loads fine and transpiles ES6 via babel!';
+
+setTimeout(() => {
+  console.log(`${message}`);
+}, 1000);
