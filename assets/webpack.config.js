@@ -1,23 +1,24 @@
+const path = require("path");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  entry: ['./web/static/js/app.js'],
+  entry: ['./js/app.js'],
   output: {
-    path: './priv/static/dist',
+    path: path.resolve(__dirname, "../priv/static"),
     filename: 'app.js',
   },
   plugins: [
-    new CopyWebpackPlugin([{ from: './web/static/assets/', to: '../' }]),
+    new CopyWebpackPlugin([{
+      from: './static',
+      to: path.resolve(__dirname, "../priv/static")
+    }]),
   ],
   module: {
     loaders: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['env'],
-        },
+        loader: 'babel-loader'
       },
     ],
   },
